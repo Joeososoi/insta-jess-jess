@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>{Title}</title>
+    <link rel="shortcut icon" href="{Favicon}">
+    {block:Description}
+        <meta name="description" content="{MetaDescription}" />
+    {/block:Description}
+    <link href="https://fonts.googleapis.com/css?family=Raleway:200" 
+    rel="stylesheet"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--------------------CSS-------------------->
+    <style type="text/css">
+    
+    /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+    */
+
+    html, body, div, span, applet, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code,
+    del, dfn, em, img, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var,
+    b, u, i, center,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, embed, 
+    figure, figcaption, footer, header, hgroup, 
+    menu, nav, output, ruby, section, summary,
+    time, mark, audio, video {
+	    margin: 0;
+	    padding: 0;
+    	border: 0;
+	    font-size: 100%;
+    	font: inherit;
+	    vertical-align: baseline;
+    }
+
+    /* HTML5 display-role reset for older browsers */
+    article, aside, details, figcaption, figure, 
+    footer, header, hgroup, menu, nav, section {
+    	display: block;
+    }
+    body {
+	    line-height: 1;
+    }
+    ol, ul {
+	    list-style: none;
+    }
+    blockquote, q {
+	    quotes: none;
+    }
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+	    content: '';
+	    content: none;
+    }
+    table {
+	    border-collapse: collapse;
+    	border-spacing: 0;
+    }
+    
+        /*==========Custom Styles==========*/
+        body {
+            font-family: 'Raleway', sans-serif;
+        }
+    
+        /*==========Grid==========*/
+        .grid {
+            display: grid;
+            width: 100%;
+            height: auto;
+            padding-left: 10%;
+            padding-right: 10%;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: calc(160px + (280 - 160) * ((100vw - 300px) /                    (1600 - 300))) 40px;
+            grid-column-gap: 12px;
+            grid-row-gap: 12px;
+            grid-auto-flow: row;
+            grid-template-areas:
+                "logo description description"
+                "menu-bar menu-bar menu-bar";
+        }
+        
+        *,
+        *:before,
+        *:after {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        
+        /*==========Typography==========*/
+        h1 {
+            font-size: 
+                calc(25px + (55 - 25) * ((100vw - 300px) / (1600 - 300)));
+        }
+        h4, .primary-menu span {
+            font-size: 
+                calc(12px + (22 - 12) * ((100vw - 300px) / (1600 - 300)));
+        }
+        h5 {
+            font-size: 
+                calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+        }
+        
+        /*==========Header==========*/
+        .primary-logo {
+            grid-area: logo;
+            justify-self: center;
+            align-self: center;
+        }
+        .logo-image {
+            border-radius: 50%;
+        }
+        .primary-title {
+            grid-area: description;
+            align-self: center;
+        }
+        .primary-menu {
+            grid-area: menu-bar;
+            display: inline-flex;
+            border-top: 2px;
+            border-style: dotted;
+            border-color: grey;
+            margin: 0 5px 0 5px;
+            padding: 7px 10px 0 10px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        /*==========Posts==========*/
+        .square {
+            position: relative;
+            box-sizing: border-box;
+        }
+        .square::before {
+            content: '';
+            display: block;
+            padding-top: 100%;
+        }
+        .photo-post {
+            position: absolute;
+            top: 0; left: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        .photo-post img {
+            width:100%;
+            height:100%;
+            object-fit: cover;
+        }
+        
+        /*==========Permalink Page==========*/
+        .permalink-page {
+            display: flex;
+            padding-left: 10%;
+            padding-right: 10%;
+            justify-content: space-between;
+        }
+        .permalink-post {
+            flex-grow: 2;
+            margin-right: 2%;
+        }
+        .caption {
+            margin-top: 2%;
+        }
+        .permalink-notes {
+            flex-grow: 1;
+        }
+        .action {
+            margin-left: 2%;
+        }
+        .more_notes_link_container {
+            margin-top: 2%;
+        }
+        
+        /*==========Links==========*/
+        a:link {
+            color: #6383b7;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #a1b2ce;
+        }
+        footer a:link {
+            color: black;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: grey;
+        }
+        
+        /*==========Footer==========*/
+        .primary-footer {
+            padding-left: 10%;
+            padding-right: 10%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            text-align: right;
+        }
+        
+        /*==========Desktop==========*/
+        @media (min-width: 1200px) {
+            .primary-logo {
+                margin-right: 20px;
+            }
+            .logo-image {
+                width: 120%;
+                height: 120%;
+            }
+        }
+        
+        /*==========Mobile==========*/
+        @media (max-width: 716px) {
+            .grid {
+                padding-left: 4px;
+                padding-right: 4px;
+                grid-column-gap: 4px;
+                grid-row-gap: 4px;
+            }
+            .primary-logo {
+                margin-left: 20px;
+            }
+            .logo-image {
+                width: 80%;
+                height: 80%;
+            }
+            .primary-menu span {
+                
+            }
+            .permalink-page {
+                flex-wrap: wrap;
+                justify-content: center;
+
+            }
+            .permalink-post {
+                margin-right: 0;
+            }
+            .permalink-post img {
+                max-width: 100vw;
+                padding-left: 4%;
+                padding-right: 4%;
+            }
+            .caption {
+                margin-left: 15px;
+            }
+            .permalink-notes {
+                margin-top: 20px;
+            }
+        }
+        
+    {CustomCSS}
+    </style>
+  </head>
+  
+  <body>
+    <section class="grid">
+        <div class="primary-logo">
+            <a href="{BlogURL}">
+                <img class="logo-image" src="{PortraitURL-128}" alt="logo">
+            </a>
+        </div>
+        <div class="primary-title">
+            <h1>{Title}</h1>
+            <h4>{Description}</h4>
+        </div>
+        <div class="primary-menu">
+            {block:HasPages}
+                {block:Pages}
+                    <a href="{URL}" class="page">{Label}</a>
+                {/block:Pages}
+            {/block:HasPages}
+        </div>
+        {block:IndexPage}
+            {block:Posts} 
+                <div class="square">
+                    {block:Text} 
+                        <div class="photo-post">
+                            {block:Title}
+                                <h3><a href="{Permalink}">{Title}</a></h3>
+                            {/block:Title}{Body} 
+                        </div>
+                    {/block:Text}
+                    {block:Photo} 
+                        <div class="photo-post">
+                            <a href="{Permalink}"><img src="{PhotoURL-500}" 
+                            alt="{PhotoAlt}"/></a> 
+                        </div>
+                    {/block:Photo}
+                    {block:Panorama} 
+                        <div class="photo-post">
+                            {LinkOpenTag}
+                                <a href="{Permalink}"><img src="
+                                {PhotoURL-Panorama}" alt="{PhotoAlt}"/></a>
+                            {LinkCloseTag}
+                        </div>
+                    {/block:Panorama}
+                    {block:Photoset} 
+                        <div class="photo-post"> 
+                            {block:Photos}
+                                <a href="{Permalink}"><img src="
+                                {PhotoURL-500}"
+                                width="{PhotoWidth-500}"height="
+                                {PhotoHeight-500}" /></a>
+                            {/block:Photos} 
+                        </div>
+                    {/block:Photoset}
+                    {block:Quote} 
+                        <div class="photo-post">
+                            "{Quote}"
+                            {block:Source}
+                                <div class="source">{Source}</div>
+                            {/block:Source} 
+                        </div>
+                    {/block:Quote}
+                    {block:Link} 
+                        <div class="photo-post">
+                            <a href="{URL}" class="link" {Target}>{Name}</a>
+                            {block:Description}
+                                <div class="description">{Description}</div>
+                            {/block:Description} 
+                        </div>
+                    {/block:Link}
+                    {block:Chat} 
+                        <div class="photo-post">
+                            {block:Title}
+                                <h3><a href="{Permalink}">{Title}</a></h3>
+                            {/block:Title} 
+                            <ul class="chat">
+                                {block:Lines}
+                                    <li class="{Alt} user_{UserNumber}">
+                                        {block:Label}
+                                            <span class="label">{Label}</span>
+                                        {/block:Label}{Line} 
+                                    </li>
+                                {/block:Lines} 
+                            </ul> 
+                        </div>
+                    {/block:Chat}
+                    {block:Video} 
+                        <div class="photo-post">
+                            {Video-500} 
+                        </div>
+                    {/block:Video}
+                    {block:Audio} 
+                        <div class="photo-post">
+                            {AudioEmbed} 
+                        </div>
+                    {/block:Audio}
+                </div>
+            {/block:Posts}
+        {/block:IndexPage}
+    </section>
+        {block:PermalinkPage}
+        <section class="permalink-page">
+            <div class="permalink-post">
+                {block:Posts}
+                    {block:Text}
+                        {block:Title}
+                            <h3><a href="{Permalink}">{Title}</a></h3>
+                        {/block:Title}{Body}
+                    {/block:Text}
+                    {block:Photo}
+                        <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+                        {block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    {/block:Photo}
+                    {block:Panorama}
+                        {LinkOpenTag}
+                            <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
+                        {LinkCloseTag}
+                        {block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    {/block:Panorama}
+                    {block:Photoset}
+                        {Photoset-500}
+                        {block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    {/block:Photoset}
+                    {block:Quote}
+                        "{Quote}"
+                        {block:Source}
+                            <div class="source">{Source}</div>
+                        {/block:Source}
+                    {/block:Quote}
+                    {block:Link}
+                        <a href="{URL}" class="link" {Target}>{Name}</a>
+                        {block:Description}
+                            <div class="description">{Description}</div>
+                        {/block:Description}
+                    {/block:Link}
+                    {block:Chat}
+                        {block:Title}
+                            <h3><a href="{Permalink}">{Title}</a></h3>
+                        {/block:Title}
+                        {block:Lines}
+                            {block:Label}
+                                <span class="label">{Label}</span>
+                            {/block:Label}{Line}
+                            {/block:Lines}
+                    {/block:Chat}
+                    {block:Video}
+                        {Video-500}{block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    {/block:Video}
+                    {block:Audio}
+                        {AudioEmbed}{block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    {/block:Audio}
+                {/block:Posts}
+            </div>
+            <div class="permalink-notes">
+                {PostNotes-16}
+            </div>
+        </section>
+        {/block:PermalinkPage}
+    <footer class="primary-footer">
+        <h5><a href="mailto:jessicamalm88@gmail.com">&copy; Jessica Malm</a></h5>
+    </footer>
+  </body>
+  
+</html>
